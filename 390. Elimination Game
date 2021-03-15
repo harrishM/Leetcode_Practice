@@ -1,0 +1,41 @@
+class Solution {
+    public int lastRemaining(int n) {
+        
+        List<Integer> list = new ArrayList<>();
+        
+        
+        for(int i=1;i<=n;i++){
+            list.add(i);
+        }
+        
+        boolean travel = true;
+        int pointer = 0;
+        
+        while(list.size() != 1){
+            list.remove(pointer);
+            
+            if(travel == true){
+                if(pointer+1 <= list.size()-1){
+                pointer = pointer+1;
+                }else{
+                    pointer = list.size()-1;
+                    travel = false;
+                }
+            }
+            else if(travel == false){
+                if(pointer-2 >= 0){
+                    
+                    pointer = pointer - 2;
+                }else{
+                    
+                    pointer = 0;
+                    travel = true;
+                }
+            }
+            
+        }
+        
+        return list.get(0);
+        
+    }
+}
