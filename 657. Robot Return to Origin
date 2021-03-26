@@ -1,0 +1,40 @@
+class Solution {
+    public boolean judgeCircle(String moves) {
+        
+        
+        int[] origin = {0,0};
+        
+        int[] up = {0,1};
+        int[] bottom = {0,-1};
+        int[] left = {-1,0};
+        int[] right = {1,0};
+        
+        for(char c: moves.toCharArray()){
+            if(c == 'U'){
+                origin[1] += up[1];
+                
+                
+            }
+            else if(c == 'D'){
+                origin[1] += bottom[1];
+            }
+            else if(c == 'L'){
+                origin[0] += left[0];
+            }
+            else if(c == 'R'){
+                origin[0] += right[0];
+            }
+            
+        }
+        
+        
+        
+        
+        if(origin[0] == 0 && origin[1] == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
