@@ -1,0 +1,71 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        
+        List<List<Integer>> final_output = new ArrayList<>();
+        
+        List<Integer> output = new ArrayList<>();
+        
+        if(root == null){
+            return final_output;
+        }
+        
+        
+        totalSum(root,targetSum,new ArrayList<Integer>(),final_output);
+        
+        return final_output;
+        
+    }
+    
+    public void totalSum(TreeNode root,int totalSum, List<Integer> output, List<List<Integer>> final_output){
+        
+        
+        
+        if(root == null){
+            return;
+        }
+        
+        output.add(root.val);
+        if(root.val == totalSum && root.left == null && root.right == null){
+            
+            final_output.add(output);
+            return;
+        }
+        
+        totalSum(root.left,totalSum - root.val , new ArrayList<Integer>(output), final_output);
+        totalSum(root.right,totalSum-root.val,new ArrayList<Integer>(output),final_output);
+        
+//         if(root.left == null && root.right == null && totalSum - root.val == 0){
+//             final_output.add(output);
+//             return;
+//         }
+        
+//         if(root.left != null){
+//             output.add(root.val);
+//             totalSum(root.left, totalSum-root.val, output, final_output);
+//         }
+        
+//         if(root.right != null){
+//             output.add(root.val);
+//             totalSum(root.right,totalSum-root.val,output,final_output);
+//         }
+        
+    }
+    
+    
+    
+}
